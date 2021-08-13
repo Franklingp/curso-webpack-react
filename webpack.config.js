@@ -1,4 +1,5 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     entry: "./src/index.js",
@@ -17,6 +18,12 @@ module.exports = {
                 use: {
                     loader: "babel-loader"
                 }
+            },
+            {
+                test: /\.html$/,
+                use: [
+                    { loader: "html-loader" }
+                ]
             }
         ]
     },
@@ -24,5 +31,11 @@ module.exports = {
         contentBase: path.join(__dirname, "dist"),
         compress: true,
         port: 3006
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: "./public/index.html",
+            filename: "./index.html"
+        })
+    ]
 }
