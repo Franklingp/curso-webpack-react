@@ -12,6 +12,7 @@ module.exports = {
         extensions: [".js", "jsx"]
     },
     mode: "development",
+    devtool: "source-map",
     module: {
         rules: [
             {
@@ -32,7 +33,6 @@ module.exports = {
                 use: [
                     "style-loader",
                     "css-loader"
-                    // "sass-loader"
                 ]
             }
         ]
@@ -49,6 +49,6 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: "[name].css"
-        })
+        }),
     ]
 }

@@ -1,5 +1,27 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 
-const App = () => <h1>Hello Reat!!! You're the best</h1>
+//components
+import Card from "./Card.jsx";
+
+//api
+import api from "../utils/api.js";
+
+const App = () => {
+    const [data, setData] = useState(null);
+
+    const getData = async () => {
+        const response = await api.getData();
+    }
+
+    useEffect(() => {
+        getData()
+    },[])
+
+    return(
+        <div className="About">
+            <Card/>
+        </div>
+    )
+}
 
 export default App;
