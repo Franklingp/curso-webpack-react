@@ -1,13 +1,13 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyWebpack = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const DotEnv = require("dotenv-webpack");
 
 module.exports = {
     entry: "./src/index.js",
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "bundle.js",
+        filename: "bundle.[contenthash].js",
     },
     resolve: {
         extensions: [".js", "jsx"],
@@ -37,12 +37,22 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    "style-loader",
+                    MiniCssExtractPlugin.loader,
                     "css-loader"
                 ]
             },
             {
+                test: /\.(woff|woff2)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: "assets/fonts/[name].[hash].[ext]"
+                },
+            },
+            {
                 test: /\.png/,
+                generator: {
+                    filename: "assets/images/[name].[hash].[ext]"
+                },
                 type: 'asset/resource'
             },
         ]
@@ -58,15 +68,8 @@ module.exports = {
             filename: "./index.html"
         }),
         new MiniCssExtractPlugin({
-            filename: "[name].css"
+            filename: "styles/[name].[contenthash].css",
         }),
-        new CopyWebpack({
-            patterns: [
-                {
-                    from: path.resolve(__dirname, "src/assets/images"),
-                    to: "assets/images"
-                }
-            ]
-        })
+        new DotEnv(),
     ]
 }
