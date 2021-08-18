@@ -1,10 +1,10 @@
 /*Get data from the api*/
 
-const url = "https://randomuser.me/api/";
+const url = process.env.API;
 
 const getData = async () => {
     try {
-        const response = await fetch("https://randomuser.me/api/");
+        const response = await fetch(url);
         switch (response.status) {
             case (200):
                 const json = await response.json();
