@@ -4,7 +4,7 @@ import React, {useState, useEffect} from "react";
 import Card from "./Card.jsx";
 
 //api
-import api from "../utils/api.js";
+import api from "@utils/api.js";
 
 const App = () => {
     const [data, setData] = useState(null);
