@@ -20,9 +20,9 @@ export default function Card(props) {
                 </ul>
             </div>
             <div className="card_social">
-                <Icon icon="instagram" url="https://twitter.com/franklin_gp"/>
-                <Icon icon="twitter" url="https://github.com/Franklingp"/>
-                <Icon icon="github" url="https://www.instagram.com/franklinpimentel/"/>
+                <Icon icon="instagram" url="https://www.instagram.com/franklinpimentel/"/>
+                <Icon icon="twitter" url="https://twitter.com/franklin_gp"/>
+                <Icon icon="github" url="https://github.com/Franklingp"/>
             </div>
         </div>
     )
